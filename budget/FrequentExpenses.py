@@ -29,7 +29,3 @@ ax.bar(categories, count)
 ax.set_title("# of purchases by category")
 
 plt.show()
-
-
-
-
