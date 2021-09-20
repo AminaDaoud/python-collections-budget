@@ -14,8 +14,17 @@ class Expenses():
         self.list = []
         self.sum = 0
 
+    def read_expenses(self, filename):
+        with open(filename, newline='') as csvfile:
+            csvreader = csv.reader(csvfile, delimiter=',')
+            for row in csvreader:
+                if '-' in row[3]:
+                    amount = float(row[3][2:].replace(',', ''))
+                    self.list.append(Expense(row[0], row[1], row[2], amount))
+                    self.sum += amount
+
     # Read in the December spending data, row[2] is the $$, and need to format $$
-    def read_expenses(self,filename):
+    def read_expensess(self,filename):
         with open(filename, newline='') as csvfile:
             csvreader = csv.reader(csvfile, delimiter=',')
             for row in csvreader:
